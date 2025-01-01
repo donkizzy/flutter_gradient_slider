@@ -1,3 +1,41 @@
+/// A custom slider widget that displays a gradient track.
+///
+/// The [GradientSlider] widget allows you to create a slider with a gradient
+/// track. It provides various customization options such as the gradient colors,
+/// thumb color, overlay color, inactive track color, and track height.
+///
+/// The [value] parameter specifies the current value of the slider, which should
+/// be between [min] and [max]. The [onChanged] callback is called when the user
+/// drags the slider.
+///
+/// The [gradientColors] parameter is a list of colors used to create the gradient
+/// for the selected portion of the track. The [overlayColor] parameter specifies
+/// the color of the overlay that appears when the thumb is pressed. The
+/// [inactiveTrackColor] parameter specifies the color of the unselected portion
+/// of the track. The [thumbColor] parameter specifies the color of the thumb.
+///
+/// The [trackHeight] parameter specifies the height of the track.
+///
+/// Example usage:
+/// ```dart
+/// GradientSlider(
+///   value: 0.5,
+///   min: 0.0,
+///   max: 1.0,
+///   gradientColors: [Colors.red, Colors.blue],
+///   onChanged: (newValue) {
+///     // Handle value change
+///   },
+///   overlayColor: Colors.blue.withOpacity(0.2),
+///   inactiveTrackColor: Colors.grey,
+///   thumbColor: Colors.black,
+///   trackHeight: 4.0,
+/// )
+/// ```
+///
+/// See also:
+///  * [Slider], which is the base widget for creating sliders.
+///  * [SliderTheme], which provides theming options for sliders.
 import 'package:flutter/material.dart';
 
 class GradientSlider extends StatelessWidget {
@@ -19,7 +57,7 @@ class GradientSlider extends StatelessWidget {
     required this.gradientColors,
     this.onChanged,
     required this.overlayColor,
-    this.inactiveTrackColor  = Colors.grey,
+    this.inactiveTrackColor = Colors.grey,
     this.trackHeight = 4.0,
     this.thumbColor = Colors.black,
   });
@@ -32,7 +70,8 @@ class GradientSlider extends StatelessWidget {
         overlayColor: overlayColor,
         inactiveTrackColor: inactiveTrackColor,
         trackHeight: trackHeight,
-        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 18, disabledThumbRadius: 18),
+        thumbShape: const RoundSliderThumbShape(
+            enabledThumbRadius: 18, disabledThumbRadius: 18),
         trackShape: GradientSliderTrackShape(
           gradientColors: gradientColors,
         ),
@@ -47,10 +86,10 @@ class GradientSlider extends StatelessWidget {
   }
 }
 
- class GradientSliderTrackShape extends SliderTrackShape {
+class GradientSliderTrackShape extends SliderTrackShape {
   final List<Color> gradientColors;
 
-  const GradientSliderTrackShape( {
+  const GradientSliderTrackShape({
     required this.gradientColors,
   });
 
@@ -64,24 +103,25 @@ class GradientSlider extends StatelessWidget {
   }) {
     final double trackHeight = sliderTheme.trackHeight!;
     final double trackLeft = offset.dx;
-    final double trackTop = offset.dy + (parentBox.size.height - trackHeight) / 2;
+    final double trackTop =
+        offset.dy + (parentBox.size.height - trackHeight) / 2;
     final double trackWidth = parentBox.size.width;
     return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
   }
 
   @override
   void paint(
-      PaintingContext context,
-      Offset offset, {
-        required RenderBox parentBox,
-        required SliderThemeData sliderTheme,
-        required Animation<double> enableAnimation,
-        required TextDirection textDirection,
-        required Offset thumbCenter,
-        bool isEnabled = false,
-        bool isDiscrete = false,
-        Offset? secondaryOffset,
-      }) {
+    PaintingContext context,
+    Offset offset, {
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    required Animation<double> enableAnimation,
+    required TextDirection textDirection,
+    required Offset thumbCenter,
+    bool isEnabled = false,
+    bool isDiscrete = false,
+    Offset? secondaryOffset,
+  }) {
     if (!isEnabled) {
       return;
     }

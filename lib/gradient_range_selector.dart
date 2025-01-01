@@ -1,3 +1,38 @@
+/// A custom range slider widget with a gradient track.
+///
+/// The [GradientRangeSelector] widget allows users to select a range of values
+/// within a specified minimum and maximum range. The track of the slider is
+/// painted with a gradient, and the thumb and overlay colors can be customized.
+///
+/// The widget requires the following parameters:
+/// - [min]: The minimum value of the range.
+/// - [max]: The maximum value of the range.
+/// - [values]: The current range of selected values.
+/// - [gradientColors]: The colors used to create the gradient on the track.
+/// - [overlayColor]: The color of the overlay when the thumb is pressed.
+/// - [inactiveTrackColor]: The color of the inactive portion of the track.
+/// - [trackHeight]: The height of the track (optional, defaults to 4.0).
+/// - [thumbColor]: The color of the thumb (optional, defaults to black).
+/// - [onChanged]: A callback function that is called when the range of values changes (optional).
+///
+/// Example usage:
+/// ```dart
+/// GradientRangeSelector(
+///   min: 0.0,
+///   max: 100.0,
+///   values: RangeValues(20.0, 80.0),
+///   gradientColors: [Colors.red, Colors.blue],
+///   overlayColor: Colors.blue.withOpacity(0.2),
+///   inactiveTrackColor: Colors.grey,
+///   onChanged: (RangeValues newValues) {
+///     // Handle value changes
+///   },
+/// )
+/// ```
+///
+/// The [GradientRangeSliderTrackShape] class is a custom track shape that paints
+/// the track with a gradient. It requires the [gradientColors] parameter to
+/// define the colors of the gradient.
 import 'package:flutter/material.dart';
 
 class GradientRangeSelector extends StatefulWidget {
@@ -37,7 +72,8 @@ class _GradientRangeSelectorState extends State<GradientRangeSelector> {
         overlayColor: widget.overlayColor,
         inactiveTrackColor: widget.inactiveTrackColor,
         trackHeight: widget.trackHeight,
-        rangeThumbShape:  const RoundRangeSliderThumbShape(enabledThumbRadius: 18, disabledThumbRadius: 18,elevation: 0.0),
+        rangeThumbShape: const RoundRangeSliderThumbShape(
+            enabledThumbRadius: 18, disabledThumbRadius: 18, elevation: 0.0),
         rangeTrackShape: GradientRangeSliderTrackShape(
           gradientColors: widget.gradientColors,
         ),
@@ -61,17 +97,17 @@ class GradientRangeSliderTrackShape extends RangeSliderTrackShape {
 
   @override
   void paint(
-      PaintingContext context,
-      Offset offset, {
-        required RenderBox parentBox,
-        required SliderThemeData sliderTheme,
-        required Animation<double> enableAnimation,
-        required Offset startThumbCenter,
-        required Offset endThumbCenter,
-        required TextDirection textDirection,
-        bool isEnabled = false,
-        bool isDiscrete = false,
-      }) {
+    PaintingContext context,
+    Offset offset, {
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    required Animation<double> enableAnimation,
+    required Offset startThumbCenter,
+    required Offset endThumbCenter,
+    required TextDirection textDirection,
+    bool isEnabled = false,
+    bool isDiscrete = false,
+  }) {
     final canvas = context.canvas;
 
     // Paint inactive track
@@ -83,7 +119,8 @@ class GradientRangeSliderTrackShape extends RangeSliderTrackShape {
     const horizontalAdjustment = 6.0;
     final trackLeft = offset.dx + horizontalAdjustment;
     final trackTop = offset.dy + (parentBox.size.height - 2.0) / 2;
-    final trackRight = trackLeft + parentBox.size.width - 2 * horizontalAdjustment;
+    final trackRight =
+        trackLeft + parentBox.size.width - 2 * horizontalAdjustment;
     final trackBottom = trackTop + 2.0;
 
     // Draw inactive track
@@ -127,7 +164,8 @@ class GradientRangeSliderTrackShape extends RangeSliderTrackShape {
   }) {
     final double trackHeight = sliderTheme.trackHeight ?? 4.0;
     final double trackLeft = offset.dx;
-    final double trackTop = offset.dy + (parentBox.size.height - trackHeight) / 2;
+    final double trackTop =
+        offset.dy + (parentBox.size.height - trackHeight) / 2;
     final double trackWidth = parentBox.size.width;
     return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
   }
