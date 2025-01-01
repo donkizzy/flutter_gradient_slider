@@ -1,7 +1,4 @@
 library flutter_gradient_slider;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'gradient_range_selector.dart';
+export 'gradient_range_slider.dart';

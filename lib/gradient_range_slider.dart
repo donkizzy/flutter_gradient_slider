@@ -8,6 +8,7 @@ class GradientSlider extends StatelessWidget {
   final ValueChanged<double>? onChanged;
   final Color overlayColor;
   final Color inactiveTrackColor;
+  final Color thumbColor;
   final double? trackHeight;
 
   const GradientSlider({
@@ -18,15 +19,16 @@ class GradientSlider extends StatelessWidget {
     required this.gradientColors,
     this.onChanged,
     required this.overlayColor,
-    required this.inactiveTrackColor,
+    this.inactiveTrackColor  = Colors.grey,
     this.trackHeight = 4.0,
+    this.thumbColor = Colors.black,
   });
 
   @override
   Widget build(BuildContext context) {
     return SliderTheme(
       data: SliderThemeData(
-        thumbColor: Theme.of(context).textTheme.bodyMedium!.color!,
+        thumbColor: thumbColor,
         overlayColor: overlayColor,
         inactiveTrackColor: inactiveTrackColor,
         trackHeight: trackHeight,
@@ -45,11 +47,10 @@ class GradientSlider extends StatelessWidget {
   }
 }
 
-class GradientSliderTrackShape extends SliderTrackShape {
+ class GradientSliderTrackShape extends SliderTrackShape {
   final List<Color> gradientColors;
-  static const Color unselectedColor = Color(0xFFDFDFDF);
 
-  const GradientSliderTrackShape({
+  const GradientSliderTrackShape( {
     required this.gradientColors,
   });
 
@@ -61,7 +62,7 @@ class GradientSliderTrackShape extends SliderTrackShape {
     bool isEnabled = false,
     bool isDiscrete = false,
   }) {
-    final double trackHeight = sliderTheme.trackHeight ?? 4.0;
+    final double trackHeight = sliderTheme.trackHeight!;
     final double trackLeft = offset.dx;
     final double trackTop = offset.dy + (parentBox.size.height - trackHeight) / 2;
     final double trackWidth = parentBox.size.width;
@@ -96,7 +97,7 @@ class GradientSliderTrackShape extends SliderTrackShape {
 
     // Paint unselected track
     final unselectedPaint = Paint()
-      ..color = unselectedColor
+      ..color = sliderTheme.inactiveTrackColor!
       ..style = PaintingStyle.fill;
 
     final unselectedRRect = RRect.fromRectAndRadius(

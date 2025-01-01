@@ -9,6 +9,7 @@ class GradientRangeSelector extends StatefulWidget {
   final Color overlayColor;
   final Color inactiveTrackColor;
   final double? trackHeight;
+  final Color thumbColor;
 
   const GradientRangeSelector({
     super.key,
@@ -20,6 +21,7 @@ class GradientRangeSelector extends StatefulWidget {
     required this.overlayColor,
     required this.inactiveTrackColor,
     this.trackHeight = 4.0,
+    this.thumbColor = Colors.black,
   });
 
   @override
@@ -31,7 +33,7 @@ class _GradientRangeSelectorState extends State<GradientRangeSelector> {
   Widget build(BuildContext context) {
     return SliderTheme(
       data: SliderThemeData(
-        thumbColor: Theme.of(context).textTheme.bodyMedium!.color!,
+        thumbColor: widget.thumbColor,
         overlayColor: widget.overlayColor,
         inactiveTrackColor: widget.inactiveTrackColor,
         trackHeight: widget.trackHeight,
@@ -74,7 +76,7 @@ class GradientRangeSliderTrackShape extends RangeSliderTrackShape {
 
     // Paint inactive track
     final inactivePaint = Paint()
-      ..color = sliderTheme.inactiveTrackColor ?? Colors.grey
+      ..color = sliderTheme.inactiveTrackColor!
       ..style = PaintingStyle.stroke
       ..strokeWidth = 4.0;
 
@@ -123,7 +125,7 @@ class GradientRangeSliderTrackShape extends RangeSliderTrackShape {
     bool isEnabled = false,
     bool isDiscrete = false,
   }) {
-    final double trackHeight = sliderTheme.trackHeight ?? 2.0;
+    final double trackHeight = sliderTheme.trackHeight ?? 4.0;
     final double trackLeft = offset.dx;
     final double trackTop = offset.dy + (parentBox.size.height - trackHeight) / 2;
     final double trackWidth = parentBox.size.width;
