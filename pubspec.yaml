@@ -1,7 +1,7 @@
 name: flutter_gradient_slider
-description: "A new Flutter project."
+description: "A new Flutter Package to create custom gradient sliders and ranges selectors."
 version: 0.0.1
-homepage:
+repository: https://github.com/donkizzy/flutter_gradient_slider
 
 environment:
   sdk: ^3.5.3
