@@ -27,7 +27,9 @@ A customizable gradient slider widget for Flutter that allows you to create beau
 - 📱 Responsive and smooth interactions
 - ⚡ High performance with minimal impact on app size
 
-![](https://github.com/user-attachments/assets/538d43f0-b86b-4245-b735-37e14cf6a4fc)
+https://github.com/user-attachments/assets/9f702fd4-c998-4466-9dd9-76952a26f732
+
+
 
 ## Installation
 
