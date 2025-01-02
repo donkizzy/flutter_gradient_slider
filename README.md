@@ -27,20 +27,22 @@ A customizable gradient slider widget for Flutter that allows you to create beau
 - 📱 Responsive and smooth interactions
 - ⚡ High performance with minimal impact on app size
 
+![](https://github.com/user-attachments/assets/538d43f0-b86b-4245-b735-37e14cf6a4fc)
+
 ## Installation
 
 Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_gradient_slider: ^1.0.0
+  flutter_gradient_slider: ^0.0.1
 ```
 
 ## Usage
 
 ### Gradient Slider
 
-```dart
+```
 GradientSlider(
 value: _currentValue,
 onChanged: (double value) {
@@ -58,7 +60,7 @@ gradientColors: const [
 
 ### Range Selector
 
-```Dart
+```
   GradientRangeSelector(
                 min: 0.0,
                 max: 1.0,
@@ -66,7 +68,7 @@ gradientColors: const [
                 gradientColors: const [Colors.red, Colors.blue],
                 overlayColor: Colors.white,
                 inactiveTrackColor: Colors.grey.withOpacity(0.8),
-                trackHeight: 30,
+                trackHeight: 4,
                 onChanged: (values) {
                 setState(() {
                   selectedValues = values;
@@ -74,6 +76,34 @@ gradientColors: const [
                 },
               ),
 ```
+
+## Parameters
+
+### GradientSlider
+
+| Parameter          |          Type          |                                          Description |
+| :----------------- | :--------------------: | ---------------------------------------------------: |
+| value              |        `double`        |                          Current value of the slider |
+| onChanged          | `ValueChanged<double>` |      Callback function when the slider value changes |
+| min                |        `double`        |           Minimum value of the slider (default: 0.0) |
+| max                |        `double`        |           Maximum value of the slider (default: 1.0) |
+| gradientColors     |     `List<Color>`      |          List of colors to create the gradient track |
+| trackHeight        |        `double`        |            Height of the slider track (default: 4.0) |
+| overlayColor       |        `Color`         | Color of the overlay when interacting with the thumb |
+| inactiveTrackColor |        `Color`         |           Color of the inactive portion of the track |
+
+### GradientRangeSelector
+
+| Parameter          |            Type             |                                          Description |
+| :----------------- | :-------------------------: | ---------------------------------------------------: |
+| value              |        `RangeValues`        |                 Current range values of the selector |
+| onChanged          | `ValueChanged<RangeValues>` |       Callback function when the range values change |
+| min                |          `double`           |            Minimum value of the range (default: 0.0) |
+| max                |          `double`           |            Maximum value of the range (default: 1.0) |
+| gradientColors     |        `List<Color>`        |          List of colors to create the gradient track |
+| trackHeight        |          `double`           |          Height of the selector track (default: 4.0) |
+| overlayColor       |           `Color`           | Color of the overlay when interacting with the thumb |
+| inactiveTrackColor |           `Color`           |           Color of the inactive portion of the track |
 
 ## Contributing
 
