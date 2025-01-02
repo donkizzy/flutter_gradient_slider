@@ -33,6 +33,7 @@
 /// The [GradientRangeSliderTrackShape] class is a custom track shape that paints
 /// the track with a gradient. It requires the [gradientColors] parameter to
 /// define the colors of the gradient.
+library;
 import 'package:flutter/material.dart';
 
 class GradientRangeSelector extends StatefulWidget {

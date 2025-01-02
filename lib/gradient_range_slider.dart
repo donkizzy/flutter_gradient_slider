@@ -36,6 +36,7 @@
 /// See also:
 ///  * [Slider], which is the base widget for creating sliders.
 ///  * [SliderTheme], which provides theming options for sliders.
+library;
 import 'package:flutter/material.dart';
 
 class GradientSlider extends StatelessWidget {
