@@ -15,6 +15,7 @@ and the Flutter guide for
 
 A customizable gradient slider widget for Flutter that allows you to create beautiful, interactive sliders with gradient tracks and customizable thumbs.
 
+
 [![pub package](https://img.shields.io/pub/v/flutter_gradient_slider.svg)](https://pub.dev/packages/flutter_gradient_slider)
 
 ## Features
@@ -27,7 +28,9 @@ A customizable gradient slider widget for Flutter that allows you to create beau
 - 📱 Responsive and smooth interactions
 - ⚡ High performance with minimal impact on app size
 
-https://github.com/user-attachments/assets/9f702fd4-c998-4466-9dd9-76952a26f732
+
+
+![demo-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/853e2171-91dd-48bd-8d03-dd14d666729e)
 
 
 
